@@ -6,9 +6,9 @@ function App() {
 
   return (
     <>
-      hi
+      <Button>hello world</Button>
     </>
-  )
+  );
 }
 
 export default App
