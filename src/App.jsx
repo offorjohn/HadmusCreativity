@@ -1,14 +1,17 @@
-import { Button } from "@chakra-ui/react";
-
+import { Route, Routes } from 'react-router-dom';
+import HomePage from "./pages/HomePage/HomePage";
 
 function App() {
 
 
   return (
     <>
-      <Button>hello world</Button>
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+
+      </Routes>
     </>
   );
 }
 
-export default App
+export default App;
