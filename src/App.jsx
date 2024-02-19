@@ -1,24 +1,19 @@
-import { Container, Flex, VStack,Box, Image } from "@chakra-ui/react";
+import { Route, Routes } from 'react-router-dom';
+import HomePage from "./pages/HomePage/HomePage";
+import AuthPage from "./pages/AuthPage/AuthPage";
+
+function App() {
 
 
-const AuthPage = () => {
   return (
+    <>
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+        <Route path='/auth' element={<AuthPage />} />
 
-      <Flex minH={"100vh"} justifyContent={"center"} alignItems={"center"} px={4}>
-      <Container maxW={"container.md"} padding={0}>
-        {/* left hand-side */}
-        <Box display={{base: "none", md:"block"}}>
-         <Image src='/auth.png' h={650} alt='Phone img' />
-        </Box>
-
-        {/* Right hand-size */}
-        <VStack>
-          
-        </VStack>
-      </Container>
-    </Flex>
-
+      </Routes>
+    </>
   );
-};
+}
 
-export default AuthPage
+export default App;
