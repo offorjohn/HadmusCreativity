@@ -11,7 +11,7 @@ import FeedPosts from "../../components/FeedPosts/FeedPosts";
            <FeedPosts />
            </Box>
         <Box flex={2} mr={20} display={{ base: "none", lg: "block" }} maxW={"300px"} border={"1x solid red"}>
-          Suggested Users
+          Suggested Uses
         </Box>
        </Flex>
       </Container>  
