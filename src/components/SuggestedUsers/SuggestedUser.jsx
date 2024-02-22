@@ -1,14 +1,9 @@
-import { VStack } from "@chakra-ui/react";
-import SuggestedHeader from "./SuggestedHeader";
-import SuggestedUser from "./SuggestedUser"; // Import the SuggestedUser component
 
-const SuggestedUsers = () => {
+
+const SuggestedUser = () => {
   return (
-    <VStack py={8} px={6} gap={4}>
-      <SuggestedHeader />
-      <SuggestedUser /> {/* Include the SuggestedUser component */}
-    </VStack>
-  );
+    <div>SuggestedUser</div>
+  )
 }
 
-export default SuggestedUsers;
+export default SuggestedUser
