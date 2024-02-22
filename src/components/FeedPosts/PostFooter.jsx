@@ -12,6 +12,7 @@ const PostFooter = () => {
             setLikes(likes - 1);
         } else {
             setLiked(true);
+            setLikes(likes + 1);
         }
     };
 
