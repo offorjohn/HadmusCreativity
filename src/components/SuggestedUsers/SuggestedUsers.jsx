@@ -1,5 +1,6 @@
-import { Flex, Text, VStack } from "@chakra-ui/react";
+import { Flex, Text, VStack, Box, Link } from "@chakra-ui/react";
 import SuggestedHeader from "./SuggestedHeader";
+import SuggestedUser from "./SuggestedUser"; // Import the SuggestedUser component
 
 const SuggestedUsers = () => {
   return (
@@ -10,12 +11,21 @@ const SuggestedUsers = () => {
         <Text fontSize={12} fontWeight={"bold"} color={"gray.500"}>
           Suggested for you
         </Text>
-        <Text fontSize={12} fontWeight={"bold"} _hover={{ color: "gray.400" }} cursor={"pointer"}
-        >
-
-        See All
+        <Text fontSize={12} fontWeight={"bold"} _hover={{ color: "gray.400" }} cursor={"pointer"}>
+          See All
         </Text>
       </Flex>
+
+      <SuggestedUser />
+      <SuggestedUser />
+      <SuggestedUser />
+
+      <Box fontSize={12} color={"gray.500"} mt={5}>
+        @ 2024 Built By 
+        <Link href='https://www.linkedin.com/in/offor-john-690771210' target='_blank' color='blue.500' fontSize={14}>
+          ME(Contacts me)
+        </Link>
+      </Box>
     </VStack>
   );
 };
