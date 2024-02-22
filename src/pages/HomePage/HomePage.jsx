@@ -10,8 +10,8 @@ import FeedPosts from "../../components/FeedPosts/FeedPosts";
         <Box flex={2} py={10} border={"1px solid blue"}>
            <FeedPosts />
            </Box>
-        <Box flex={2} mr={20} display={{ base: "none", lg: "block" }} maxW={"300px"} border={"1x solid red"}>
-          Suggested Uses
+        <Box flex={2} mr={20} display={{ base: "none", lg: "block" }} maxW={"300px"} >
+          Suggested Users
         </Box>
        </Flex>
       </Container>  
