@@ -1,6 +1,6 @@
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
 import { useState } from "react";
-import { NotificationsLogo, UnlikeLogo } from "../../assets/constacts";
+import { CommentLogo, NotificationsLogo, UnlikeLogo } from "../../assets/constacts";
 
 const PostFooter = () => {
     const [liked, setLiked] = useState(false);
@@ -16,11 +16,29 @@ const PostFooter = () => {
     };
 
     return (
-        <Flex alignItems={"center"} gap={4} w={"full"} pt={0} mb={2} mt={"auto"}>
-            <Box onClick={handleLike}>
-                {!liked ? <NotificationsLogo /> : <UnlikeLogo />}
-            </Box>
-        </Flex>
+        <>
+            <Flex alignItems={"center"} gap={4} w={"full"} pt={0} mb={2} mt={4}>
+                <Box onClick={handleLike} cursor={"pointer"} fontSize={18}>
+                    {!liked ? <NotificationsLogo /> : <UnlikeLogo />}
+                </Box>
+
+                <Box cursor={"pointer"} fontSize={18}>
+                    <CommentLogo />
+                </Box>
+            </Flex>
+            <Text fontWeight={600} fontSize={"sm"}>
+                {likes} likes
+            </Text>
+            <Text fontSize='sm' fontWeight={700}>
+                asaprogrammer_{" "}
+                <Text as='span' fontWeight={400}>
+                    Feeling good
+                </Text>
+            </Text>
+            <Text fontSize='sm' color={"gray"}>
+                View all 1,000 comments
+            </Text>
+        </>
     );
 };
 
