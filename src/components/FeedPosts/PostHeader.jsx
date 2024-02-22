@@ -1,4 +1,4 @@
-import { Avatar, Box, Flex } from "@chakra-ui/react";
+import { Avatar, Box, Flex, Text } from "@chakra-ui/react";
 
 const PostHeader = () => {
     return (
@@ -9,7 +9,20 @@ const PostHeader = () => {
                 <Box as="span" fontWeight="bold">as a programmer</Box>
                 <Box color="gray.500" ml={1}>. 1w</Box>
             </Flex>
-            {/* Additional content can be added here */}
+            <Box
+                cursor={"pointer"}>
+
+                <Text
+                  fontSize={12}
+                  color={"blue.500"}
+                  fontWeight={"bold"}
+                  _hover={{
+                    color: "white",
+                  }}
+                  transition={"0.2s ease-in-out"}
+                
+                >Unfollow</Text>
+            </Box>
         </Flex>
     );
 };
