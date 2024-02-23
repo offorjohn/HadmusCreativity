@@ -19,7 +19,7 @@ const SuggestedUsers = () => {
       <SuggestedUser name='Dan Abrahmo' followers={1392} avatar='https://bit.ly/dan-abramov' />
       <SuggestedUser name='Ryan Florence' followers={567} avatar='https://bit.ly/ryan-florence' />
 
-      <SuggestedUser name='Christian Nwamba' followers={759} avatar='https://bit.ly/code-beast' />
+      <SuggestedUser name='Christian Nwamba' followers={759} avatar='https://bit.ly/code-beast'/>
 
       <Box fontSize={12} color={"gray.500"} mt={5}>
         @ 2024 Built By {" "}
