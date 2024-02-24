@@ -4,7 +4,7 @@ import ProfileTabs from '../../components/Profile/ProfileTabs';
 import ProfilePosts from '../../components/Profile/ProfilePosts';
 
 const ProfilePage = () => {
-  return <Container maxw="container,lg" py={5}>
+  return <Container maxW="container.lg" py={5}>
    <Flex
      py={10}
      px={4}
@@ -16,11 +16,11 @@ const ProfilePage = () => {
         <ProfileHeader />
     </Flex>
     <Flex
-       px={{ base: 2, sm: 4 }}
+       px={{ base:2, sm:4}}
        maxW={"full"}
        mx={"auto"}
        borderTop={"1px solid"}
-       borderColor={"whiteAllpha.300"}
+       borderColor={"whiteAlpha.300"}
        direction={"column"}
     
     >
