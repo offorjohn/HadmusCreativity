@@ -9,7 +9,7 @@ const PageLayout = ({ children }) => {
     const { pathname } = useLocation();
     const [user, loading] = useAuthState(auth);
     const canRenderSidebar = pathname !== "/auth" && user;
-    const canRenderNavbar = !user && pathname !== "/auth";
+    const canRenderNavbar = !user && !loading && pathname !== "/auth";
 
     const checkingUserIsAuth = !user && loading;
     if (checkingUserIsAuth) return <PageLayoutSpinner />;
@@ -24,7 +24,7 @@ const PageLayout = ({ children }) => {
             ) : null}
 
             {/* Navbar */}
-            {canRenderNavbar && <Navbar />}
+            {canRenderNavbar ? <Navbar /> : null}
             
             {/* the page content on the right */}
             <Box flex={1} w={{ base: "calc(100% - 70px)", md: "calc(100% - 240px)" }} mx={"auto"}>

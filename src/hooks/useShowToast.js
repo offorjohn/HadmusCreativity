@@ -13,7 +13,8 @@ const useShowToast = () => {
         });
     };
 
-    return showToast;
+    return { showToast }; // Return as an object
 };
 
 export default useShowToast;
+

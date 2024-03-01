@@ -8,7 +8,6 @@ const useLogout = () => {
     const showToast = useShowToast();
     const logoutUser = useAuthStore((state) => state.logout);
 
- 
     const handleLogout = async () => {
         try {
             await signOut();
@@ -19,7 +18,7 @@ const useLogout = () => {
         }
     };
 
-    return { handleLogout, isLoggingOut, error }; // Add the missing closing parenthesis
+    return { handleLogout, isLoggingOut, error }; // Added the missing closing parenthesis
 };
 
 export default useLogout;
