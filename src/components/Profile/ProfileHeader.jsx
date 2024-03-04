@@ -4,7 +4,7 @@ import useAuthStore from "../../store/authStore";
 
 const ProfileHeader = () => {
   const { userProfile } = useUserProfileStore();
-  const authUser = useAuthStore((state) => state.user);
+  const authUser = useAuthStore(state => state.user);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const visitingOwnProfileAndAuth = authUser && authUser.username === userProfile.username;
   const visitingAnotherProfileAndAuth = authUser && authUser.username !== userProfile.username;
