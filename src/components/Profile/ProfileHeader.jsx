@@ -42,11 +42,11 @@ const ProfileHeader = () => {
               <Button
                 bg={"blue.500"}
                 color={"white"}
-                _hover={{ bg: "blue.600" }}
+                _hover={{ bg: "whiteAlpha.800" }}
                 size={{ base: "xs", md: "sm" }}
-                /* You can add your own logic here for Follow/Unfollow */
+               
               >
-                {/* Add your own label here based on the logic */}
+                Follow
               </Button>
             </Flex>
           )}
