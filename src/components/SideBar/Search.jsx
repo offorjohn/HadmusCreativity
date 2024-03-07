@@ -1,13 +1,4 @@
-import {
-	Box,
-	Button,
-	Flex,
-	FormControl,
-	FormLabel,
-	Input,
-	Modal,
-	ModalBody,
-	ModalCloseButton,
+import {Box, Button,Flex,FormControl,FormLabel,Input,Modal,ModalBody,ModalCloseButton,
 	ModalContent,
 	ModalHeader,
 	ModalOverlay,
@@ -15,19 +6,20 @@ import {
 	useDisclosure,
 } from "@chakra-ui/react";
 import { SearchLogo } from "../../assets/constacts";
-//import useSearchUser from "../../hooks/useSearchUser";
+import useSearchUser from "../../hooks/useSearchUser";
 import { useRef } from "react";
 import SuggestedUser from "../SuggestedUsers/SuggestedUser";
 
 const Search = () => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const searchRef = useRef(null);
-	//const { user, isLoading, getUserProfile, setUser } = useSearchUser();
+	const { user, isLoading, getUserProfile,setUser } = useSearchUser();
 
 	const handleSearchUser = (e) => {
 		e.preventDefault();
 		getUserProfile(searchRef.current.value);
 	};
+    console.log(user);
 
 	return (
 		<>
@@ -67,11 +59,13 @@ const Search = () => {
 							</FormControl>
 
 							<Flex w={"full"} justifyContent={"flex-end"}>
-								<Button type='submit' ml={"auto"} size={"sm"} my={4} >
+								<Button type='submit' ml={"auto"} size={"sm"} my={4} isLoading={isLoading} >
 									Search
 								</Button>
 							</Flex>
 						</form>
+                         {user && <SuggestedUser user={user} setUser={setUser} />}
+
 						
 					</ModalBody>
 				</ModalContent>
