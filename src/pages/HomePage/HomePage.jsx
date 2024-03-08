@@ -12,6 +12,8 @@ import SuggestedUsers from "../../components/SuggestedUsers/SuggestedUsers";
            <FeedPosts />
            </Box>
         <Box flex={2} mr={20} display={{ base: "none", lg: "block" }} maxW={"300px"} >
+
+          <SuggestedUsers />
         
         </Box>
        </Flex>
