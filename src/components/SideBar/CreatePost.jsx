@@ -22,7 +22,7 @@ import { useRef, useState } from "react";
 import usePreviewImg from "../../hooks/usePreviewImg";
 import useShowToast from "../../hooks/useShowToast";
 import useAuthStore from "../../store/authStore";
-//import usePostStore from "../../store/postStore";
+import usePostStore from "../../store/postStore";
 import useUserProfileStore from "../../store/userProfileStore";
 import { useLocation } from "react-router-dom";
 import { addDoc, arrayUnion, collection, doc, updateDoc } from "firebase/firestore";
@@ -32,7 +32,7 @@ import { getDownloadURL, ref, uploadString } from "firebase/storage";
 const CreatePost = () => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const [caption, setCaption] = useState("");
-	const imageRef = useRef(null);
+	
 	const { handleImageChange, selectedFile, setSelectedFile } = usePreviewImg();
 	const showToast = useShowToast();
 	const { isLoading, handleCreatePost } = useCreatePost();
@@ -86,7 +86,7 @@ const CreatePost = () => {
 							onChange={(e) => setCaption(e.target.value)}
 						/>
 
-						<Input type='file' hidden ref={imageRef} onChange={handleImageChange} />
+						<Input type='file'  onChange={handleImageChange} />
 
 						<BsFillImageFill
 							onClick={() => imageRef.current.click()}
@@ -125,7 +125,7 @@ function useCreatePost() {
 	const showToast = useShowToast();
 	const [isLoading, setIsLoading] = useState(false);
 	const authUser = useAuthStore((state) => state.user);
-	//const createPost = usePostStore((state) => state.createPost);
+	const createPost = usePostStore((state) => state.createPost);
 	const addPost = useUserProfileStore((state) => state.addPost);
 	const userProfile = useUserProfileStore((state) => state.userProfile);
 	const { pathname } = useLocation();
@@ -145,10 +145,10 @@ function useCreatePost() {
 		try {
 			const postDocRef = await addDoc(collection(firestore, "posts"), newPost);
 			const userDocRef = doc(firestore, "users", authUser.uid);
-			const imageRef = ref(storage, `posts/${postDocRef.id}`);
+			
 
 			await updateDoc(userDocRef, { posts: arrayUnion(postDocRef.id) });
-			await uploadString(imageRef, selectedFile, "data_url");
+			await uploadString( selectedFile, "data_url");
 			const downloadURL = await getDownloadURL(imageRef);
 
 			await updateDoc(postDocRef, { imageURL: downloadURL });
