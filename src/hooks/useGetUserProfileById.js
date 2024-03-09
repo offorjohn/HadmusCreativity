@@ -1,33 +1,48 @@
 import { useEffect, useState } from "react";
+import usePostStore from "../store/postStore";
+import useAuthStore from "../store/authStore";
 import useShowToast from "./useShowToast";
-import { doc, getDoc } from "firebase/firestore";
+import useUserProfileStore from "../store/userProfileStore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { firestore } from "../firebase/firebase";
 
-const useGetUserProfileById = (userId) => {
+const useGetFeedPosts = () => {
 	const [isLoading, setIsLoading] = useState(true);
-	const [userProfile, setUserProfile] = useState(null);
-
+	const { posts, setPosts } = usePostStore();
+	const authUser = useAuthStore((state) => state.user);
 	const showToast = useShowToast();
+	const { setUserProfile } = useUserProfileStore();
 
 	useEffect(() => {
-		const getUserProfile = async () => {
+		const getFeedPosts = async () => {
 			setIsLoading(true);
-			setUserProfile(null);
+			if (authUser.following.length === 0) {
+				setIsLoading(false);
+				setPosts([]);
+				return;
+			}
+			const q = query(collection(firestore, "posts"), where("createdBy", "in", authUser.following));
 			try {
-				const userRef = await getDoc(doc(firestore, "users", userId));
-				if (userRef.exists()) {
-					setUserProfile(userRef.data());
-				}
+				const querySnapshot = await getDocs(q);
+				const feedPosts = [];
+
+				querySnapshot.forEach((doc) => {
+					feedPosts.push({ id: doc.id, ...doc.data() });
+				});
+
+				feedPosts.sort((a, b) => b.createdAt - a.createdAt);
+				setPosts(feedPosts);
 			} catch (error) {
 				showToast("Error", error.message, "error");
 			} finally {
 				setIsLoading(false);
 			}
 		};
-		getUserProfile();
-	}, [showToast, setUserProfile, userId]);
 
-	return { isLoading, userProfile, setUserProfile };
+		if (authUser) getFeedPosts();
+	}, [authUser, showToast, setPosts, setUserProfile]);
+
+	return { isLoading, posts };
 };
 
-export default useGetUserProfileById;
+export default useGetFeedPosts;

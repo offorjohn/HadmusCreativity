@@ -29,7 +29,7 @@ const FeedPosts = () => {
 					<Text fontSize={"md"} color={"red.400"}>
 						Dayuum. Looks like you don&apos;t have any friends.
 					</Text>
-					<Text color={"red.400"}>Stop coding and go make some!!</Text>
+					<Text color={"red.400"}>Please Feel Free to Make Some And try out some functionality</Text>
 				</>
 			)}
 		</Container>
